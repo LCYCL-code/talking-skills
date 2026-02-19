@@ -15,7 +15,8 @@ app = FastAPI(title="Talking Skills API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    # allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=["*"],  # 允许所有域名访问 (为了 Netlify 部署)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

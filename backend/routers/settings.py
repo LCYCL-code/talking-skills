@@ -31,7 +31,7 @@ async def save_ai_config(body: AiConfigUpdate):
         from fastapi import HTTPException
         raise HTTPException(status_code=400, detail="模型名称不能为空")
 
-    ai_service.save_ai_config(
+    await ai_service.save_ai_config(
         body.api_key.strip(), 
         body.base_url.strip(), 
         body.model_name.strip()

@@ -220,6 +220,17 @@ async def init_db():
                 created_at TEXT DEFAULT (datetime('now', 'localtime'))
             )
         """)
+
+        # AI 配置表
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS ai_config (
+                id INTEGER PRIMARY KEY CHECK (id = 1),
+                api_key TEXT,
+                base_url TEXT,
+                model_name TEXT,
+                updated_at TEXT DEFAULT (datetime('now', 'localtime'))
+            )
+        """)
         await db.commit()
 
         cursor = await db.execute("SELECT COUNT(*) as cnt FROM uploaded_files")
